@@ -2,6 +2,9 @@ name: GameCI Workflow 😎
 
 on: [push, pull_request]
 
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
 jobs:
   # Test Runner (All Branches)
   testRunner:
@@ -100,8 +103,6 @@ jobs:
       # Build
       - name: Build project
         uses: game-ci/unity-builder@v2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           targetPlatform: WebGL
 
