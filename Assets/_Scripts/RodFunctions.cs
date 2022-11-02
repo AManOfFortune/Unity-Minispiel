@@ -57,10 +57,12 @@ public class RodFunctions : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
+            // Get the playerController component of hit player
+            PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
+            // Calculate the knockback direction
             Vector3 knockbackPlayer = (collision.gameObject.transform.position - transform.position);
-            Debug.Log("Test");
-            playerRb.AddForce(knockbackPlayer * knockback, ForceMode.Impulse);
+            // Add impact to the player
+            playerController.AddImpact(knockbackPlayer, knockback);
         }
     }
 

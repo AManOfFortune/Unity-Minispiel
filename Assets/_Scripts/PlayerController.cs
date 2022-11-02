@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpHeight = 2f;
     // The gravity affecting the player in units per second
     [SerializeField] private float gravity = 20f;
+    // The mass of the player
+    [SerializeField] private float mass = 5f;
     
     // The getter for the playerIndex
     public int PlayerIndex => playerIndex;
@@ -18,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController _characterController;
     // The current movement direction
     private Vector3 _moveDirection = Vector3.zero;
+    // The current impact direction for knockback
+    private Vector3 _impactDirection = Vector3.zero;
 
     private void Awake()
     {
@@ -48,5 +52,23 @@ public class PlayerController : MonoBehaviour
         
         // Move the controller
         _characterController.Move(_moveDirection * Time.deltaTime);
+        
+        // Apply impact force
+        if (_impactDirection.magnitude > 0.2)
+        {
+            _characterController.Move(_impactDirection * Time.deltaTime);
+        }
+
+        _impactDirection = Vector3.Lerp(_impactDirection, Vector3.zero, 5 * Time.deltaTime);
     }
+
+    public void AddImpact(Vector3 direction, float force)
+    {
+        direction.Normalize();
+
+        if (direction.y < 0) direction.y = -direction.y;
+
+        _impactDirection += direction.normalized * force / mass;
+    }
+    
 }
