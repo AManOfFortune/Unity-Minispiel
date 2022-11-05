@@ -71,7 +71,7 @@ public class RodFunctions : MonoBehaviour
             Vector3 knockbackPlayer = (collision.gameObject.transform.position - transform.position);
 
             // Add impact to the player
-            playerController.AddImpact(knockbackPlayer, knockback);
+            playerController.AddImpact(knockbackPlayer, knockbackStrength);
         }
     }
 
