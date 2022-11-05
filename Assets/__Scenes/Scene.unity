@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedBoost: 1
-  knockback: 100
+  knockback: 200
   cooldown: 15
   rotationDirection: 1
   speedBoostOnCooldown: 0
@@ -292,8 +292,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 0
-  jumpHeight: 1
-  gravity: 20
+  jumpHeight: 2
+  gravity: 10
+  mass: 5
 --- !u!143 &445367021
 CharacterController:
   m_ObjectHideFlags: 0
@@ -538,6 +539,7 @@ MonoBehaviour:
   playerIndex: 1
   jumpHeight: 1
   gravity: 20
+  mass: 5
 --- !u!143 &753670964
 CharacterController:
   m_ObjectHideFlags: 0
@@ -743,7 +745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867064226}
   m_LocalRotation: {x: -0, y: -0.14206041, z: -0, w: 0.989858}
-  m_LocalPosition: {x: 0.000015208661, y: 0.20000005, z: -0.007955604}
+  m_LocalPosition: {x: 0.000015208661, y: 1, z: -0.007955604}
   m_LocalScale: {x: 2, y: 0.030000003, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -898,6 +900,7 @@ MonoBehaviour:
   playerIndex: 2
   jumpHeight: 1
   gravity: 20
+  mass: 5
 --- !u!143 &1085984637
 CharacterController:
   m_ObjectHideFlags: 0
