@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedBoost: 1
-  knockback: 200
+  knockbackStrength: 200
   cooldown: 15
   rotationDirection: 1
   speedBoostOnCooldown: 0
@@ -295,6 +295,7 @@ MonoBehaviour:
   jumpHeight: 2
   gravity: 10
   mass: 5
+  jumpKey: 97
 --- !u!143 &445367021
 CharacterController:
   m_ObjectHideFlags: 0
@@ -537,9 +538,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 1
-  jumpHeight: 1
-  gravity: 20
+  jumpHeight: 2
+  gravity: 10
   mass: 5
+  jumpKey: 115
 --- !u!143 &753670964
 CharacterController:
   m_ObjectHideFlags: 0
@@ -898,9 +900,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 2
-  jumpHeight: 1
-  gravity: 20
+  jumpHeight: 2
+  gravity: 10
   mass: 5
+  jumpKey: 100
 --- !u!143 &1085984637
 CharacterController:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using UnityEngine;
 public class RodFunctions : MonoBehaviour
 {
     public float speedBoost = 1.0f;
-    public float knockbackStrength = 10.0f;
+    public float knockbackStrength = 200.0f;
     public float cooldown = 10.0f;
     public float rotationDirection = 1.0f;
     public bool speedBoostOnCooldown = false;

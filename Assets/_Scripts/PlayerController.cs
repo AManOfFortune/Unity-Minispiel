@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = 20f;
     // The mass of the player
     [SerializeField] private float mass = 5f;
+
+    // Temporary override to test all players on a single keyboard
+    [SerializeField] private KeyCode jumpKey;
     
     // The getter for the playerIndex
     public int PlayerIndex => playerIndex;
@@ -31,6 +35,13 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // Temporary override of jumping
+        if (Input.GetKeyDown(jumpKey))
+        {
+            // Calculate the amount of upward speed needed to achieve desired jump height
+            _moveDirection.y = Mathf.Sqrt(2f * gravity * jumpHeight);
+        }
+
         // Check if the player is grounded
         if (_characterController.isGrounded)
         {
