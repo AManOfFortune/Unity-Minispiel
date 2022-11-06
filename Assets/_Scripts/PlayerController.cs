@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float mass = 5f;
 
     // Temporary override to test all players on a single keyboard
-    [SerializeField] private KeyCode jumpKey;
+    public KeyCode jumpKey;
     
     // The getter for the playerIndex
     public int PlayerIndex => playerIndex;

@@ -6,6 +6,7 @@ public class RotateRod : MonoBehaviour
 {
     public float rotationSpeed;
     private RodFunctions gameManager;
+    private StartOnReady startManager;
     private float speedBoost;
     private float rotationDirection;
 
@@ -13,13 +14,17 @@ public class RotateRod : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("Moving Rod").GetComponent<RodFunctions>();
+        startManager = GameObject.Find("Start Manager").GetComponent<StartOnReady>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        speedBoost = gameManager.speedBoost;
-        rotationDirection = gameManager.rotationDirection;
-        transform.Rotate(Vector3.up, rotationDirection * speedBoost * rotationSpeed * Time.deltaTime);
+        if (startManager.startGame)
+        {
+            speedBoost = gameManager.speedBoost;
+            rotationDirection = gameManager.rotationDirection;
+            transform.Rotate(Vector3.up, rotationDirection * speedBoost * rotationSpeed * Time.deltaTime);
+        }
     }
 }
