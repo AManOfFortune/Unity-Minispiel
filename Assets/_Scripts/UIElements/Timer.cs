@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     //public TextMeshProUGUI timertext;
     public CenterTextUI CenterTextController;
     public Text centerText;
+    private StartOnReady _startOnReady;
 
     private float currentSeconds;
     private int currentMinutes;
@@ -21,7 +22,10 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _startOnReady = FindObjectOfType<StartOnReady>();
+
         StartTimer(startingTime);
+        StopTimer();
     }
 
     // resets the timer and lets it start  
@@ -43,11 +47,13 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         runtimer = false;
+        endedtimer = true;
     }
     // lets the timer continue from where it stopped
     public void ContinueTimer()
     {
         runtimer = true;
+        endedtimer = false;
     }
 
     // Update is called once per frame
@@ -63,7 +69,7 @@ public class Timer : MonoBehaviour
             }
 
             // if the timer reached 0 stop it
-            if (currentMinutes < 0) { StopTimer(); }
+            if (currentMinutes < 0) { runtimer = false; }
         }
 
         // sends a signal once to centertext to change the textbox and resets the timer to a nice number
@@ -72,7 +78,8 @@ public class Timer : MonoBehaviour
             currentMinutes = 0;
             currentSeconds = 0;
 
-            CenterTextController.setCenterText("The Timer has ended!");
+            CenterTextController.setCenterText("The Game has ended!");
+            _startOnReady.startGame = false;
         }
 
         UpdateTimer();

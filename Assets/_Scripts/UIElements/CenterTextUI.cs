@@ -12,18 +12,11 @@ public class CenterTextUI : MonoBehaviour
 
     public int ShowForSeconds = 0;
 
-    public void Start()
-    {
-        Hide();
-    }
-
     // sets the Textfield to a text
     public void setCenterText(string text)
     {
         centerText.text = text;
         Show();
-        // starts the timer to then turn the textbox off again
-        StartCoroutine(HideAfterSeconds(5));
     }
 
     // hides the Textbox
@@ -36,6 +29,13 @@ public class CenterTextUI : MonoBehaviour
     public void Show()
     {
         centerTextBox.SetActive(true);
+    }
+
+    // Shows a message for x seconds
+    public void ShowMessageFor(string message, int seconds)
+    {
+        setCenterText(message); // Show message
+        StartCoroutine(HideAfterSeconds(seconds)); // Hide message after x seconds
     }
 
     // waits for X seconds to then turn off the Textbox

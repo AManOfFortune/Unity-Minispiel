@@ -5,18 +5,16 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    public Text[] PlayerNames = new Text[4];
-    public Text[] PlayerButtons = new Text[4];
+    public List<Text> PlayerNames = new();
+    public List<Text> PlayerButtons = new();
 
-    // list of the buttons each player has to press
-    public string[] ButtonsToPRess = { "A", "B", "C", "D" };
+    private Dictionary<int, KeyCode> ButtonsToPress;
 
     // Start is called before the first frame update
     void Start()
     {
-        string[] names = { "Spieler 1", "Spieler 2", "Spieler 3", "Spieler 4", };
+        string[] names = { "Spieler 1", "Spieler 2", "Spieler 3", "Spieler 4" };
         LoadNames(names);
-        ShowButtonsToPress();
     }
     
     // sets the names of each player to a given array of names
@@ -31,25 +29,30 @@ public class PlayerUI : MonoBehaviour
     }
 
     // sets the textbox to the instruction the player has to press
-    public void ShowButtonsToPress()
+    public void ShowButtonsToPress(Dictionary<int, KeyCode> buttonsToPress)
     {
-        for (int i = 0; i < 4; i++) {
-            PlayerButtons[i].text = "Press " + ButtonsToPRess[i];
+        ButtonsToPress = buttonsToPress;
+
+        foreach(var playerButtonPair in ButtonsToPress) { 
+            PlayerButtons[playerButtonPair.Key].text = "Press " + playerButtonPair.Value.ToString();
         }
     }
 
-    // if a player has pressed their button, then you can change the textfield here
+    // if a player has pressed their button, change the textfield here
     public void SetButtonPressed(int  i)
     {
-        PlayerButtons[i].text = "Great!";
+        PlayerButtons[i].text = "Ready!";
+    }
+
+    // if a player stops pressing their button, change the textfield back
+    public void UnsetButtonPressed(int i)
+    {
+        PlayerButtons[i].text = "Press " + ButtonsToPress[i].ToString();
     }
 
     // once all players have pressed their buttons hide the textfields
-    public void HideButtonsToPress()
+    public void PrintScore(int playerIndex, int score)
     {
-        foreach(Text Textfield in PlayerButtons)
-        {
-            Textfield.text = "";
-        }
+        PlayerButtons[playerIndex].text = "Score: " + score;
     }
 }

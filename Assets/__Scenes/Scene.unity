@@ -194,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Press [Button]
+  m_Text: 
 --- !u!222 &235460045
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Timer
+  m_Text: 
 --- !u!1 &333971080
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +488,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Press [Button]
+  m_Text: 
 --- !u!222 &339566713
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -909,7 +909,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Press [Button]
+  m_Text: 
 --- !u!222 &708812621
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1584,7 +1584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1094684640
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1638,7 +1638,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Center Text
+  m_Text: 
 --- !u!222 &1094684642
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1896,7 +1896,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Press [Button]
+  m_Text: 
 --- !u!222 &1516595015
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2309,7 +2309,7 @@ MonoBehaviour:
   timertext: {fileID: 255648215}
   CenterTextController: {fileID: 1760778652}
   centerText: {fileID: 1094684641}
-  startingTime: 10
+  startingTime: 70
   runtimer: 0
   endedtimer: 0
 --- !u!114 &1760778651
@@ -2334,11 +2334,6 @@ MonoBehaviour:
   - {fileID: 708812620}
   - {fileID: 339566712}
   - {fileID: 1516595014}
-  ButtonsToPRess:
-  - A
-  - B
-  - C
-  - D
 --- !u!114 &1760778652
 MonoBehaviour:
   m_ObjectHideFlags: 0

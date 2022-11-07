@@ -8,6 +8,9 @@ public class StartOnReady : MonoBehaviour
     public bool startGame = false;
 
     private Dictionary<int, KeyCode> jumpKeys = new();
+    private PlayerUI _playerUI;
+    private CenterTextUI _centerTextUI;
+    private Timer _timer;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +23,12 @@ public class StartOnReady : MonoBehaviour
             jumpKeys[playerController.PlayerIndex] = playerController.jumpKey;
         }
 
-        // TODO: Update UI with correct keys
+        _playerUI = FindObjectOfType<PlayerUI>();
+        _centerTextUI = FindObjectOfType<CenterTextUI>();
+        _timer = FindObjectOfType<Timer>();
+
+        _playerUI.ShowButtonsToPress(jumpKeys);
+        _centerTextUI.setCenterText("EVERYBODY READY?");
     }
 
     // Update is called once per frame
@@ -31,14 +39,24 @@ public class StartOnReady : MonoBehaviour
         {
             startGame = true;
 
-            foreach (var keyCode in jumpKeys.Values)
+            foreach (var keyCodePlayerIndexPairs in jumpKeys)
             {
                 // If a key is not pressed, startGame is set to false again
-                if (!Input.GetKey(keyCode))
+                if (!Input.GetKey(keyCodePlayerIndexPairs.Value))
                 {
+                    _playerUI.UnsetButtonPressed(keyCodePlayerIndexPairs.Key);
                     startGame = false;
-                    break;
                 }
+                else
+                {
+                    _playerUI.SetButtonPressed(keyCodePlayerIndexPairs.Key);
+                }
+            }
+
+            if(startGame)
+            {
+                _centerTextUI.ShowMessageFor("LETS GO!", 1);
+                _timer.ContinueTimer();
             }
         }
     }

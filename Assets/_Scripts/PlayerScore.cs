@@ -6,6 +6,17 @@ using UnityEngine;
 public class PlayerScore : MonoBehaviour
 {
     [SerializeField] private int score = 0;
+    private PlayerUI _playerUI;
+
+    private int _playerIndex;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _playerUI = FindObjectOfType<PlayerUI>();
+
+        _playerIndex = gameObject.GetComponent<PlayerController>().PlayerIndex;
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -13,7 +24,7 @@ public class PlayerScore : MonoBehaviour
         {
             score++; // Slightly bugged, score sometimes gets increased more than once
 
-            // TODO: Update UI
+            _playerUI.PrintScore(_playerIndex, score);
         }
     }
 }
