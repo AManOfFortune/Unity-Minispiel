@@ -24,7 +24,7 @@ public class RodFunctions : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && !speedBoostOnCooldown)
         {
             //set speed multiplyer to a higher float. 
-            speedBoost = 5.0f;
+            speedBoost = 8.0f;
             //set boolean to true to put ability on cooldown
             speedBoostOnCooldown = true;
             StartCoroutine(SpeedBoostRoutine());

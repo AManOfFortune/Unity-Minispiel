@@ -24,7 +24,14 @@ public class RotateRod : MonoBehaviour
         {
             speedBoost = gameManager.speedBoost;
             rotationDirection = gameManager.rotationDirection;
-            transform.Rotate(Vector3.up, rotationDirection * speedBoost * rotationSpeed * Time.deltaTime);
+            if (CompareTag("HourRod"))
+            {
+                transform.Rotate(Vector3.up, speedBoost * rotationSpeed * Time.deltaTime);
+            }
+            if (CompareTag("MinuteRod"))
+            {
+                transform.Rotate(Vector3.up, rotationDirection * rotationSpeed * Time.deltaTime);
+            }
         }
     }
 }

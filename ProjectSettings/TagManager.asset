@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - ScoreCollider
+  - HourRod
+  - MinuteRod
   layers:
   - Default
   - TransparentFX
