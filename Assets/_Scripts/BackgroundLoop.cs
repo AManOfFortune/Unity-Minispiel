@@ -7,65 +7,72 @@ public class BackgroundLoop : MonoBehaviour
     public GameObject[] levels;
     private Camera mainCamera;
     private Vector2 screenBounds;
+    public float choke; //to make the sprite overlap
+    public float scrollSpeed;
+
+    private Vector3 lastScreenPosition;
+
     void Start()
     {
         mainCamera = gameObject.GetComponent<Camera>();
         screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
-        foreach(GameObject myObject in levels)
+        foreach (GameObject obj in levels)
         {
-            loadChildObjects(myObject);
+            loadChildObjects(obj);
         }
+        lastScreenPosition = transform.position;
     }
-
-    // Update is called once per frame
-    void Update()
+    void loadChildObjects(GameObject obj)
     {
-        
-    }
-
-    void loadChildObjects(GameObject myObject)
-    {
-        float objectWidth = myObject.GetComponent<SpriteRenderer>().bounds.size.x;
+        float objectWidth = obj.GetComponent<SpriteRenderer>().bounds.size.x - choke;
         int childsNeeded = (int)Mathf.Ceil(screenBounds.x * 2 / objectWidth);
-        GameObject clone = Instantiate(myObject) as GameObject;
-        for(int i=0; i<=childsNeeded; i++)
+        GameObject clone = Instantiate(obj) as GameObject;
+        for (int i = 0; i <= childsNeeded; i++)
         {
-            GameObject myClone = Instantiate(clone) as GameObject;
-            myClone.transform.SetParent(myObject.transform);
-            myClone.transform.position = new Vector3(objectWidth * i, myObject.transform.position.y, myObject.transform.position.z);
-            myClone.name = myObject.name + i;
+            GameObject c = Instantiate(clone) as GameObject;
+            c.transform.SetParent(obj.transform);
+            c.transform.position = new Vector3(objectWidth * i, obj.transform.position.y, obj.transform.position.z);
+            c.name = obj.name + i;
         }
         Destroy(clone);
-        Destroy(myObject.GetComponent<SpriteRenderer>());
+        Destroy(obj.GetComponent<SpriteRenderer>());
     }
-
-    void repositionChildObjects(GameObject myObject)
+    void repositionChildObjects(GameObject obj)
     {
-        Transform[] children = myObject.GetComponentsInChildren<Transform>();
-        if(children.Length > 1)
+        Transform[] children = obj.GetComponentsInChildren<Transform>();
+        if (children.Length > 1)
         {
             GameObject firstChild = children[1].gameObject;
             GameObject lastChild = children[children.Length - 1].gameObject;
-            float halfObjectWidth = lastChild.GetComponent<SpriteRenderer>().bounds.extents.x;
-            if(transform.position.x + screenBounds.x > lastChild.transform.position.x + halfObjectWidth)
+            float halfObjectWidth = lastChild.GetComponent<SpriteRenderer>().bounds.extents.x - choke;
+            if (transform.position.x + screenBounds.x > lastChild.transform.position.x + halfObjectWidth)
             {
                 firstChild.transform.SetAsLastSibling();
                 firstChild.transform.position = new Vector3(lastChild.transform.position.x + halfObjectWidth * 2, lastChild.transform.position.y, lastChild.transform.position.z);
-            } 
-            else if(transform.position.x - screenBounds.x < firstChild.transform.position.x - halfObjectWidth) 
+            }
+            else if (transform.position.x - screenBounds.x < firstChild.transform.position.x - halfObjectWidth)
             {
                 lastChild.transform.SetAsFirstSibling();
                 lastChild.transform.position = new Vector3(firstChild.transform.position.x - halfObjectWidth * 2, firstChild.transform.position.y, firstChild.transform.position.z);
             }
-
         }
     }
-
-    private void LateUpdate()
+    void Update()
     {
-        foreach(GameObject myObject in levels)
+        Vector3 velocity = Vector3.zero;
+        Vector3 desiredPosition = transform.position + new Vector3(scrollSpeed, 0, 0);
+        Vector3 smoothPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, 0.3f);
+        transform.position = smoothPosition;
+    }
+    void LateUpdate()
+    {
+        foreach (GameObject obj in levels)
         {
-            repositionChildObjects(myObject);
+            repositionChildObjects(obj);
+            float parallaxSpeed = 1 - Mathf.Clamp01(Mathf.Abs(transform.position.z / obj.transform.position.z));
+            float difference = transform.position.x - lastScreenPosition.x;
+            obj.transform.Translate(Vector3.right * difference * parallaxSpeed);
         }
+        lastScreenPosition = transform.position;
     }
 }
