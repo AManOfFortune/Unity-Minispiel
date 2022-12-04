@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
         }
 
         _impactDirection = Vector3.Lerp(_impactDirection, Vector3.zero, 5 * Time.deltaTime);
+
     }
 
     public void AddImpact(Vector3 direction, float force)
