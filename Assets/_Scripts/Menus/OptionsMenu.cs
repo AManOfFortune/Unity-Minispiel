@@ -10,23 +10,26 @@ public class OptionsMenu : MonoBehaviour
     public GameObject optionsMenu;
     public AudioSource audioSource;
     public Slider volumeSlider;
-
-    //[SerializeField] private TextMeshProUGUI volumeValue;
+    //public TextMeshProUGUI volumeValue;
 
     private void Start()
     {
-        // Initialize the options menu with the current volume
-        volumeSlider.value = audioSource.volume;
-        
     }
 
     public void SetVolume()
     {
-        // Set the volume of the audio source
-        //volumeValue.SetText($"{Value.ToString("N4")}");
-        audioSource.volume = volumeSlider.value;
+        // Debug Messages
         Debug.Log("SetVolume called!");
         Debug.Log("Volume set to " + audioSource.volume);
+
+        // Set the volume of the audio source
+        audioSource.volume = volumeSlider.value;
+
+        // Update the text of the volume value field
+        //volumeValue.SetText($"{volumeSlider.value.ToString("N4")}");
+
+        // Save the new volume value to the PlayerPrefs
+        SaveVolume();
     }
 
     public void OnReturn()
@@ -34,4 +37,11 @@ public class OptionsMenu : MonoBehaviour
         optionsMenu.SetActive(false);
         mainScene.SetActive(true);
     }
+    public void SaveVolume()
+    {
+        // Save the value of the volume slider to the PlayerPrefs
+        PlayerPrefs.SetFloat("volume", volumeSlider.value);
+        Debug.Log("SaveVolume called!");
+    }
+
 }

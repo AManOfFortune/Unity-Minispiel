@@ -10,7 +10,8 @@ public class StartOnReady : MonoBehaviour
     private Dictionary<int, KeyCode> jumpKeys = new();
     private PlayerUI _playerUI;
     private CenterTextUI _centerTextUI;
-    private Timer _timer;
+    public Timer _timer;
+    public GameObject transparentBackground;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +58,7 @@ public class StartOnReady : MonoBehaviour
             {
                 _centerTextUI.ShowMessageFor("LETS GO!", 1);
                 _timer.ContinueTimer();
+                transparentBackground.SetActive(false);
             }
         }
     }

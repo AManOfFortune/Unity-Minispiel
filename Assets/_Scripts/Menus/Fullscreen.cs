@@ -12,11 +12,6 @@ public class Fullscreen : MonoBehaviour
         fullscreenToggle.isOn = Screen.fullScreen;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void SetFullscreen(bool isFullscreen)
     {
         // Set the game to be played in fullscreen or windowed mode
