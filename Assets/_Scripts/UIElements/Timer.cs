@@ -12,8 +12,8 @@ public class Timer : MonoBehaviour
     public Text centerText;
     private StartOnReady _startOnReady;
 
-    private float currentSeconds;
-    private int currentMinutes;
+    public float currentSeconds;
+    public int currentMinutes;
     public int startingTime = 70;
 
     public bool runtimer;
