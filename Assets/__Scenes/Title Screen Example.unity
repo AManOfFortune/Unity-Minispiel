@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 14072041}
   - component: {fileID: 14072040}
   - component: {fileID: 14072044}
+  - component: {fileID: 14072045}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -242,6 +243,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitleScreen: {fileID: 14072039}
   OptionsMenu: {fileID: 1537665982}
+--- !u!114 &14072045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14072039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f264d3e147629084c911dc59551b9bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuButtons:
+  - {fileID: 1442071746}
+  - {fileID: 1912761303}
+  - {fileID: 743883346}
+  isActiveMenu: 1
 --- !u!1 &72655061
 GameObject:
   m_ObjectHideFlags: 0
@@ -3235,6 +3253,7 @@ GameObject:
   - component: {fileID: 1537665985}
   - component: {fileID: 1537665984}
   - component: {fileID: 1537665987}
+  - component: {fileID: 1537665988}
   m_Layer: 5
   m_Name: OptionsMenu
   m_TagString: Untagged
@@ -3342,6 +3361,23 @@ MonoBehaviour:
   optionsMenu: {fileID: 1537665982}
   audioSource: {fileID: 264011542}
   volumeSlider: {fileID: 1095657460}
+--- !u!114 &1537665988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537665982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f264d3e147629084c911dc59551b9bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuButtons:
+  - {fileID: 1605820260}
+  - {fileID: 964100765}
+  - {fileID: 1592622438}
+  isActiveMenu: 1
 --- !u!1 &1558439799
 GameObject:
   m_ObjectHideFlags: 0
