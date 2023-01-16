@@ -45,7 +45,7 @@ public class ControllerMenuNavigation : MonoBehaviour
         {
             NextSelection();
         }
-        if (horizontal < 0 || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        if (horizontal < 0 || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.UpArrow))
         {
             PreviousSelection();
         }
