@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,10 +18,14 @@ public class ControllerMenuNavigation : MonoBehaviour
 
     void Update()
     {
+        MoveThroughMenu();
+    }
+
+    void MoveThroughMenu()
+    {
         if (!isActiveMenu)
             return;
-
-        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Submit"))
         {
             if (isSliderSelected)
@@ -40,15 +45,20 @@ public class ControllerMenuNavigation : MonoBehaviour
                 }
             }
         }
+        if (Mathf.Abs(vertical) > 0.8f)
+        {
+            if (vertical > 0 || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.UpArrow))
+            {
+                PreviousSelection();
+            }
+            if (vertical < 0 || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.DownArrow))
+            {
+                NextSelection();
+            }
+          //  StartCoroutine(DelayInput());
+        }
+            
 
-        if (horizontal > 0 || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.DownArrow))
-        {
-            NextSelection();
-        }
-        if (horizontal < 0 || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.UpArrow))
-        {
-            PreviousSelection();
-        }
     }
 
     void NextSelection()
@@ -71,6 +81,8 @@ public class ControllerMenuNavigation : MonoBehaviour
             menuButtons[currentSelection].GetComponent<Button>().OnSelect(null);
             isSliderSelected = false;
         }
+        Debug.Log("Currently displaying " + menuButtons[currentSelection].GetComponent<Button>().name);
+
     }
 
     void PreviousSelection()
@@ -93,5 +105,11 @@ public class ControllerMenuNavigation : MonoBehaviour
             menuButtons[currentSelection].GetComponent<Button>().OnSelect(null);
             isSliderSelected = false;
         }
+        Debug.Log("Currently displaying " + menuButtons[currentSelection].GetComponent<Button>().name);
+    }
+
+    IEnumerator DelayInput()
+    {
+        yield return new WaitForSeconds(5.0f);
     }
 }
