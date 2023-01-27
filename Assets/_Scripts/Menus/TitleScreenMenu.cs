@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class TitleScreenMenu : MonoBehaviour
 {
     public GameObject TitleScreen;
-    public GameObject OptionsMenu;
+    public GameObject VolumeSettings;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,7 @@ public class TitleScreenMenu : MonoBehaviour
     public void Options()
     {
         TitleScreen.SetActive(false);
-        OptionsMenu.SetActive(true);
+        VolumeSettings.SetActive(true);
     }
 
     public void QuitGame()

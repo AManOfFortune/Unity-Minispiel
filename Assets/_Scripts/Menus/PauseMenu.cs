@@ -28,6 +28,7 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         SceneManager.LoadScene("Title Screen 2"); //current title screen name (needs to be adjusted if changed)
+        Time.timeScale = 1.0f;
     }
 
     public void RestartGame()
@@ -38,6 +39,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseButton()
     {
+        Debug.Log("Reached IUAVIUBAASO");
         transparentBackground.SetActive(true);
         readyText.SetActive(false);
         startGame = startOnReady.GetComponent<StartOnReady>().startGame;
@@ -49,6 +51,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
+        optionsMenu.SetActive(false);
         pauseButton.SetActive(true);
         if (!startGame)
         {
@@ -61,7 +64,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void OptionButton()
+    public void OpenVolumeSettings()
     {
         optionsMenu.SetActive(true);
         pauseMenu.SetActive(false);

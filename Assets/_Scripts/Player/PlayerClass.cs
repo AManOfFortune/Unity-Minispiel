@@ -1,7 +1,12 @@
-using System;
+using Newtonsoft.Json.Linq;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+
+public class PlayerClass : MonoBehaviour
 {
     // The playerIndex used to match the PlayerController with the PlayerInput
     [SerializeField] private int playerIndex = 0;
@@ -12,58 +17,41 @@ public class PlayerController : MonoBehaviour
     // The mass of the player
     [SerializeField] private float mass = 5f;
 
-    // Temporary override to test all players on a single keyboard
-    public KeyCode jumpKey;
-    
     // The getter for the playerIndex
     public int PlayerIndex => playerIndex;
-    // The property set by the inputManager that determines whether the player is jumping or not
-    public bool IsJumping { get; set; }
+
+    private float movespeed = 2.0f;
 
     // The cached reference to the CharacterController
     private CharacterController _characterController;
+
     // The current movement direction
     private Vector3 _moveDirection = Vector3.zero;
+    private Vector2 move;
+
     // The current impact direction for knockback
     private Vector3 _impactDirection = Vector3.zero;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
     private void Awake()
     {
         // Cache the CharacterController
         _characterController = GetComponent<CharacterController>();
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        // Temporary override of jumping
-        if (Input.GetKeyDown(jumpKey))
-        {
-            // Calculate the amount of upward speed needed to achieve desired jump height
-            _moveDirection.y = Mathf.Sqrt(2f * gravity * jumpHeight);
-        }
-
-        // Check if the player is grounded
-        if (_characterController.isGrounded)
-        {
-            // Check if the jump button is pressed
-            if (IsJumping)
-            {
-                // Calculate the amount of upward speed needed to achieve desired jump height
-                _moveDirection.y = Mathf.Sqrt(2f * gravity * jumpHeight);
-            }
-            else
-            {
-                // Set downward momentum to 0 if grounded and not jumping
-                _moveDirection.y = 0f;
-            }
-        }
-        
         // Bring the movement down by applying the gravity over time
         _moveDirection.y -= gravity * Time.deltaTime;
-        
+
         // Move the controller
         _characterController.Move(_moveDirection * Time.deltaTime);
-        
+
         // Apply impact force
         if (_impactDirection.magnitude > 0.2)
         {
@@ -73,7 +61,6 @@ public class PlayerController : MonoBehaviour
         _impactDirection = Vector3.Lerp(_impactDirection, Vector3.zero, 5 * Time.deltaTime);
 
     }
-
     public void AddImpact(Vector3 direction, float force)
     {
         direction.Normalize();
@@ -82,5 +69,22 @@ public class PlayerController : MonoBehaviour
 
         _impactDirection += direction.normalized * force / mass;
     }
-    
+
+    public void PlayerJump()
+    {
+        Debug.Log("Reached PlayerJump");
+        // Calculate the amount of upward speed needed to achieve desired jump height
+        if (_characterController.isGrounded)
+        {
+            _moveDirection.y = Mathf.Sqrt(2f * gravity * jumpHeight);
+        }
+    }
+
+    public void PlayerMove(InputValue value)
+    {
+        //updates movespeed
+        move = value.Get<Vector2>();
+        _moveDirection.x = move.x * movespeed;
+        _moveDirection.z = move.y * movespeed;
+    }
 }

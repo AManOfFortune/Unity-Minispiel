@@ -21,7 +21,7 @@ public class PlayerScore : MonoBehaviour
     {
         _playerUI = FindObjectOfType<PlayerUI>();
 
-        _playerIndex = gameObject.GetComponent<PlayerController>().PlayerIndex;
+        _playerIndex = gameObject.GetComponent<PlayerClass>().PlayerIndex;
 
         GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
         players.AddRange(playerObjects);

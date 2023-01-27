@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionsMenu : MonoBehaviour
+public class VolumeSettings : MonoBehaviour
 {
     public GameObject mainScene;
     public GameObject optionsMenu;
@@ -42,6 +42,11 @@ public class OptionsMenu : MonoBehaviour
         // Save the value of the volume slider to the PlayerPrefs
         PlayerPrefs.SetFloat("volume", volumeSlider.value);
         Debug.Log("SaveVolume called!");
+    }
+
+    public void ChangeVolume(int changed)
+    {
+        volumeSlider.value += changed;
     }
 
 }

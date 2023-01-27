@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1467,7 +1467,6 @@ GameObject:
   - component: {fileID: 445367023}
   - component: {fileID: 445367022}
   - component: {fileID: 445367021}
-  - component: {fileID: 445367020}
   - component: {fileID: 445367026}
   - component: {fileID: 445367027}
   - component: {fileID: 445367028}
@@ -1478,23 +1477,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &445367020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445367019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6f1649d11176fd4bb2f4788c105506f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerIndex: 0
-  jumpHeight: 2
-  gravity: 10
-  mass: 5
-  jumpKey: 97
 --- !u!143 &445367021
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1631,13 +1613,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 445367019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8c589394cf863a4eb3ef07e43ec18ce, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ca97fa31ff8904f85aee1c5fca1417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: -15
-  maxX: 15
-  minY: -10
-  maxY: 10
+  playerIndex: 0
+  jumpHeight: 2
+  gravity: 20
+  mass: 5
 --- !u!1 &531480542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2513,7 +2495,6 @@ GameObject:
   - component: {fileID: 753670966}
   - component: {fileID: 753670965}
   - component: {fileID: 753670964}
-  - component: {fileID: 753670963}
   - component: {fileID: 753670969}
   - component: {fileID: 753670970}
   - component: {fileID: 753670971}
@@ -2524,23 +2505,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &753670963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 753670962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6f1649d11176fd4bb2f4788c105506f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerIndex: 1
-  jumpHeight: 2
-  gravity: 10
-  mass: 5
-  jumpKey: 115
 --- !u!143 &753670964
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2677,13 +2641,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 753670962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8c589394cf863a4eb3ef07e43ec18ce, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ca97fa31ff8904f85aee1c5fca1417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: -15
-  maxX: 15
-  minY: -10
-  maxY: 10
+  playerIndex: 1
+  jumpHeight: 2
+  gravity: 20
+  mass: 5
 --- !u!1 &797285630
 GameObject:
   m_ObjectHideFlags: 0
@@ -2746,7 +2710,7 @@ CharacterController:
   m_GameObject: {fileID: 797285630}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
@@ -2843,13 +2807,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 797285630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8c589394cf863a4eb3ef07e43ec18ce, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ca97fa31ff8904f85aee1c5fca1417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: -15
-  maxX: 15
-  minY: -10
-  maxY: 10
+  playerIndex: 3
+  jumpHeight: 2
+  gravity: 20
+  mass: 5
 --- !u!1 &858797717
 GameObject:
   m_ObjectHideFlags: 0
@@ -2934,7 +2898,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059067667}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Scripts
         m_MethodName: OptionButton
         m_Mode: 1
@@ -3407,7 +3371,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1059067666}
-  - component: {fileID: 1059067667}
   m_Layer: 0
   m_Name: Pause Canvas
   m_TagString: Untagged
@@ -3432,24 +3395,6 @@ Transform:
   m_Father: {fileID: 1760778649}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1059067667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059067665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e438287712facf543aeb0f8e659d408a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 1540099549}
-  pauseButton: {fileID: 61502320}
-  optionsMenu: {fileID: 585600312}
-  transparentBackground: {fileID: 42407756}
-  readyText: {fileID: 1094684639}
-  startOnReady: {fileID: 1550646423}
 --- !u!1 &1085984635
 GameObject:
   m_ObjectHideFlags: 0
@@ -3463,7 +3408,6 @@ GameObject:
   - component: {fileID: 1085984639}
   - component: {fileID: 1085984638}
   - component: {fileID: 1085984637}
-  - component: {fileID: 1085984636}
   - component: {fileID: 1085984642}
   - component: {fileID: 1085984643}
   - component: {fileID: 1085984644}
@@ -3474,23 +3418,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1085984636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085984635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6f1649d11176fd4bb2f4788c105506f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerIndex: 2
-  jumpHeight: 2
-  gravity: 10
-  mass: 5
-  jumpKey: 100
 --- !u!143 &1085984637
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3627,13 +3554,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1085984635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8c589394cf863a4eb3ef07e43ec18ce, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ca97fa31ff8904f85aee1c5fca1417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: -15
-  maxX: 15
-  minY: -10
-  maxY: 10
+  playerIndex: 2
+  jumpHeight: 2
+  gravity: 20
+  mass: 5
 --- !u!1 &1094684639
 GameObject:
   m_ObjectHideFlags: 0
@@ -8870,7 +8797,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1294164757}
-  - component: {fileID: 1294164756}
   m_Layer: 0
   m_Name: MinuteRod Rotation
   m_TagString: MinuteRod
@@ -8878,19 +8804,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1294164756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294164755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54226f851ba85cf48806a87c08c5f6f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 50
 --- !u!4 &1294164757
 Transform:
   m_ObjectHideFlags: 0
@@ -8917,7 +8830,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1404353523}
-  - component: {fileID: 1404353522}
   m_Layer: 0
   m_Name: HourRod Rotation
   m_TagString: HourRod
@@ -8925,19 +8837,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1404353522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1404353521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54226f851ba85cf48806a87c08c5f6f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 30
 --- !u!4 &1404353523
 Transform:
   m_ObjectHideFlags: 0
@@ -9386,7 +9285,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059067667}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Scripts
         m_MethodName: ResumeButton
         m_Mode: 1
@@ -14381,7 +14280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1615883827}
   - component: {fileID: 1615883826}
-  - component: {fileID: 1615883825}
+  - component: {fileID: 1615883828}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -14389,26 +14288,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1615883825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615883824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &1615883826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14439,6 +14318,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1615883828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615883824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &1622374364
 GameObject:
   m_ObjectHideFlags: 0
@@ -14748,6 +14657,7 @@ GameObject:
   - component: {fileID: 1760778652}
   - component: {fileID: 1760778651}
   - component: {fileID: 1760778650}
+  - component: {fileID: 1760778653}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -14828,6 +14738,24 @@ MonoBehaviour:
   centerTextBox: {fileID: 1094684639}
   centerText: {fileID: 1094684641}
   ShowForSeconds: 0
+--- !u!114 &1760778653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760778648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e438287712facf543aeb0f8e659d408a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 1540099549}
+  pauseButton: {fileID: 61502320}
+  optionsMenu: {fileID: 585600312}
+  transparentBackground: {fileID: 42407756}
+  readyText: {fileID: 1094684639}
+  startOnReady: {fileID: 1550646423}
 --- !u!1 &1841249665
 GameObject:
   m_ObjectHideFlags: 0
@@ -14843,7 +14771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1841249666
 Transform:
   m_ObjectHideFlags: 0
@@ -15026,7 +14954,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059067667}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Scripts
         m_MethodName: QuitGame
         m_Mode: 1
@@ -15256,7 +15184,7 @@ GameObject:
   - component: {fileID: 1990117518}
   - component: {fileID: 1990117517}
   - component: {fileID: 1990117516}
-  - component: {fileID: 1990117515}
+  - component: {fileID: 1990117520}
   m_Layer: 0
   m_Name: Hour Rod
   m_TagString: Untagged
@@ -15279,24 +15207,6 @@ Transform:
   m_Father: {fileID: 1404353523}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &1990117515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1990117513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e7f0b5956bf6bc46aacddef95709a14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedBoost: 1
-  knockbackStrength: 200
-  cooldown: 15
-  rotationDirection: 1
-  speedBoostOnCooldown: 0
-  switchDirectionOnCooldown: 0
 --- !u!54 &1990117516
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15377,6 +15287,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990117513}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1990117520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990117513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7f0b5956bf6bc46aacddef95709a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedBoost: 1
+  knockbackStrength: 200
+  cooldown: 15
+  rotationDirection: 1
+  speedBoostOnCooldown: 0
+  switchDirectionOnCooldown: 0
 --- !u!1 &1991985946
 GameObject:
   m_ObjectHideFlags: 0
@@ -15596,7 +15524,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059067667}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Scripts
         m_MethodName: PauseButton
         m_Mode: 1
@@ -15999,7 +15927,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1059067667}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Scripts
         m_MethodName: RestartGame
         m_Mode: 1
@@ -16058,6 +15986,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2143650752}
+  - component: {fileID: 2143650754}
   m_Layer: 0
   m_Name: RodFolder
   m_TagString: Untagged
@@ -16082,3 +16011,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2143650754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143650751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54226f851ba85cf48806a87c08c5f6f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 30

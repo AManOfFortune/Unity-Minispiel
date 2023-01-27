@@ -6,7 +6,7 @@ using UnityEngine;
 public class RodFunctions : MonoBehaviour
 {
     public float speedBoost = 1.0f;
-    public float knockbackStrength = 200.0f;
+    public float knockbackStrength = 2000.0f;
     public float cooldown = 10.0f;
     public float rotationDirection = 1.0f;
     public bool speedBoostOnCooldown = false;
@@ -19,9 +19,12 @@ public class RodFunctions : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {        
+    }
+
+    public void RodSpeedBoost()
     {
-        //check what Key was input and if the corresponding ability is on cooldown.
-        if (Input.GetKeyDown(KeyCode.UpArrow) && !speedBoostOnCooldown)
+        if (!speedBoostOnCooldown)
         {
             //set speed multiplyer to a higher float. 
             speedBoost = 8.0f;
@@ -29,7 +32,11 @@ public class RodFunctions : MonoBehaviour
             speedBoostOnCooldown = true;
             StartCoroutine(SpeedBoostRoutine());
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow) && !switchDirectionOnCooldown)
+    }
+
+    public void RodSwitchDirection()
+    {
+        if (!switchDirectionOnCooldown)
         {
             //multiply the current speed by -1 to switch directions
             rotationDirection *= -1;
@@ -66,12 +73,12 @@ public class RodFunctions : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // Get the playerController component of hit player
-            PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
+            PlayerClass playerClass = collision.gameObject.GetComponent<PlayerClass>();
             // Calculate the knockback direction
             Vector3 knockbackPlayer = (collision.gameObject.transform.position - transform.position);
 
             // Add impact to the player
-            playerController.AddImpact(knockbackPlayer, knockbackStrength);
+            playerClass.AddImpact(knockbackPlayer, knockbackStrength);
         }
     }
 
