@@ -6,16 +6,20 @@ using UnityEngine;
 public class StartOnReady : MonoBehaviour
 {
     public bool startGame = false;
+    public bool endGame = false;
+    public GameObject confetti;
 
     private Dictionary<int, KeyCode> jumpKeys = new();
     private PlayerUI _playerUI;
     private CenterTextUI _centerTextUI;
     public Timer _timer;
     public GameObject transparentBackground;
+    private PlayerController[] playerControllers;
 
     // Start is called before the first frame update
     void Start()
     {
+        confetti.SetActive(false);
         // Get all Jump Input Keycodes
         PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
 
@@ -59,6 +63,32 @@ public class StartOnReady : MonoBehaviour
                 _centerTextUI.ShowMessageFor("LETS GO!", 1);
                 _timer.ContinueTimer();
                 transparentBackground.SetActive(false);
+
+                if (!endGame)
+                {
+                    endGame = true;
+                    foreach(var alivePlayer in playerControllers)
+                    {
+                        //if a player is still alive, end game is set to false again
+                        if (alivePlayer.isActiveAndEnabled)
+                        {
+                            endGame = false;
+                        }
+                        
+                    }
+                    if(endGame)
+                    {
+                        _timer.StopTimer();
+                        _centerTextUI.ShowMessageFor("Players Lose!", 10);
+                        confetti.SetActive(true);
+                    }
+                }
+                if (_timer.endedtimer)
+                {
+                    _timer.StopTimer();
+                    _centerTextUI.ShowMessageFor("Players Win!", 10);
+                    confetti.SetActive(true);
+                }
             }
         }
     }

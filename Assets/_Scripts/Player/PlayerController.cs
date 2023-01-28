@@ -27,6 +27,13 @@ public class PlayerController : MonoBehaviour
     // The current impact direction for knockback
     private Vector3 _impactDirection = Vector3.zero;
 
+
+    //max game bounds (wip numbers)
+    public float minX = -10.0f;
+    public float maxX = 10.0f;
+    public float minY = -10.0f;
+    public float maxY = 10.0f;
+
     private void Awake()
     {
         // Cache the CharacterController
@@ -72,6 +79,12 @@ public class PlayerController : MonoBehaviour
 
         _impactDirection = Vector3.Lerp(_impactDirection, Vector3.zero, 5 * Time.deltaTime);
 
+        //declare player as "dead" if he leaves the bounds
+        Vector3 characterPosition = _characterController.transform.position;
+        if (characterPosition.x < minX || characterPosition.x > maxX || characterPosition.y < minY || characterPosition.y > maxY)
+        {
+            _characterController.enabled = false;
+        }
     }
 
     public void AddImpact(Vector3 direction, float force)
