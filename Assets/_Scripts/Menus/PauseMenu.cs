@@ -28,6 +28,7 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         SceneManager.LoadScene("Title Screen 2"); //current title screen name (needs to be adjusted if changed)
+        Time.timeScale = 1.0f;
     }
 
     public void RestartGame()
