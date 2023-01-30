@@ -47,15 +47,14 @@ public class ControllerMenuNavigation : MonoBehaviour
         }
         if (Mathf.Abs(vertical) > 0.8f)
         {
-            if (vertical > 0 || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.UpArrow))
+            if (/*vertical > 0 ||*/ Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 PreviousSelection();
             }
-            if (vertical < 0 || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.DownArrow))
+            if (/*vertical < 0 ||*/ Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 NextSelection();
             }
-          //  StartCoroutine(DelayInput());
         }
             
 
