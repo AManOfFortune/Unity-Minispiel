@@ -78,7 +78,7 @@ public class Timer : MonoBehaviour
             currentMinutes = 0;
             currentSeconds = 0;
 
-            CenterTextController.setCenterText("The Game has ended!");
+            _startOnReady.GameEnd(true);
             _startOnReady.startGame = false;
         }
 

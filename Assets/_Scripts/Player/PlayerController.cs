@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     // The mass of the player
     [SerializeField] private float mass = 5f;
 
+    public bool isAlive = true;
+
     // Temporary override to test all players on a single keyboard
     public KeyCode jumpKey;
     
@@ -83,7 +85,7 @@ public class PlayerController : MonoBehaviour
         Vector3 characterPosition = _characterController.transform.position;
         if (characterPosition.x < minX || characterPosition.x > maxX || characterPosition.y < minY || characterPosition.y > maxY)
         {
-            _characterController.enabled = false;
+            isAlive = false;
         }
     }
 

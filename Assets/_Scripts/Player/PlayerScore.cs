@@ -38,41 +38,5 @@ public class PlayerScore : MonoBehaviour
     }
     void Update()
     {
-        float minutes = startOnReady.GetComponent<Timer>().currentMinutes;
-        // Check if only one player remains in the game
-        bool singlePlayerWon = false;
-        if (players.Count == 1)
-        {
-            singlePlayerWon = true;
-        }
-
-        // Check if the rest of the players have won
-        bool restOfPlayersWon = false;
-        if (minutes < 0)
-        {
-            restOfPlayersWon = true;
-        }
-
-        // If either the single player won or the rest of the players won, end the game
-        if (singlePlayerWon)
-        {
-            EndGame(true);
-        }
-        else if (restOfPlayersWon)
-        {
-            EndGame(false);
-        }
-    }
-
-    private void EndGame(bool result)
-    {
-        if(result)
-        {
-            Debug.Log("Solo player won!");
-        }
-        else
-        {
-            Debug.Log("The Team with the 3 players won!");
-        }
     }
 }

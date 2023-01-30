@@ -22,7 +22,7 @@ public class TitleScreenMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Scene"); //current game scene name (needs to be adjusted if changed)
+        SceneManager.LoadScene("MainGame"); //current game scene name (needs to be adjusted if changed)
     }
 
     public void Options()

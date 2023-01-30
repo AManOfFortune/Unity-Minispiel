@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartOnReady : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class StartOnReady : MonoBehaviour
     private CenterTextUI _centerTextUI;
     public Timer _timer;
     public GameObject transparentBackground;
-    private PlayerController[] playerControllers;
+    public bool isAlive;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class StartOnReady : MonoBehaviour
         {
             jumpKeys[playerController.PlayerIndex] = playerController.jumpKey;
         }
+        
 
         _playerUI = FindObjectOfType<PlayerUI>();
         _centerTextUI = FindObjectOfType<CenterTextUI>();
@@ -58,38 +60,60 @@ public class StartOnReady : MonoBehaviour
                 }
             }
 
-            if(startGame)
+            if (startGame)
             {
                 _centerTextUI.ShowMessageFor("LETS GO!", 1);
                 _timer.ContinueTimer();
                 transparentBackground.SetActive(false);
-
-                if (!endGame)
-                {
-                    endGame = true;
-                    foreach(var alivePlayer in playerControllers)
-                    {
-                        //if a player is still alive, end game is set to false again
-                        if (alivePlayer.isActiveAndEnabled)
-                        {
-                            endGame = false;
-                        }
-                        
-                    }
-                    if(endGame)
-                    {
-                        _timer.StopTimer();
-                        _centerTextUI.ShowMessageFor("Players Lose!", 10);
-                        confetti.SetActive(true);
-                    }
-                }
-                if (_timer.endedtimer)
-                {
-                    _timer.StopTimer();
-                    _centerTextUI.ShowMessageFor("Players Win!", 10);
-                    confetti.SetActive(true);
-                }
             }
         }
+        if(startGame & !endGame)
+        {
+            RunGame();
+        }
+    }
+
+    void RunGame()
+    {
+        PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
+
+            endGame = true;
+            foreach (PlayerController playerController in playerControllers)
+            {
+                isAlive = playerController.isAlive;
+                //if a player is still alive, end game is set to false again
+                if (isAlive)
+                {
+                    endGame = false;
+                }
+            }
+        if (endGame)
+        {
+            bool win = false;
+            GameEnd(win);
+        }
+    }
+
+    public void GameEnd(bool win)
+    {
+        if (!win)
+        {
+            startGame = false;
+            _timer.StopTimer();
+            _centerTextUI.ShowMessageFor("Players Lose!",10);
+            confetti.SetActive(true);
+        }
+        else
+        {
+            _centerTextUI.ShowMessageFor("Players Win!",10);
+            confetti.SetActive(true);
+        }
+        StartCoroutine(GameEndCoroutine());
+    }
+
+    IEnumerator GameEndCoroutine()
+    {
+        yield return new WaitForSeconds(10);
+        SceneManager.LoadScene("GameOver");
     }
 }
